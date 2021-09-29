@@ -13,10 +13,10 @@ class MyFavoriteBooks extends React.Component {
     }
   }
 componentDidMount = async ()=>{
-  // http://localhost:3001/getbooks?email=mohammad464@gmail.com
+  // http://localhost:3001/getbooks?email=mohammadabdo518@gmail.com
    let email = this.props.auth0.user.email
    console.log('sssss',email)
-  let bookData = await axios.get(`https://backend-api30.herokuapp.com//getbooks?email=${email}`)
+  let bookData = await axios.get(`https://backend-api30.herokuapp.com/getbooks?email=${email}`)
   this.setState({
     Bookinfo: bookData.data
   })
