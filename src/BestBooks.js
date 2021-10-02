@@ -8,7 +8,7 @@ import CardGroup from 'react-bootstrap/CardGroup'
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import BookForm from './component/BookFrom'
-
+import UpdateBook from './component/UpdateBook'
 class MyFavoriteBooks extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +28,7 @@ componentDidMount = async ()=>{
 }
 addBook = async (Bookforinfo) => {
   let bookData = await axios.post(`http://localhost:3001/addBook`, Bookforinfo)
-  console.log('sssss',bookData)
+  console.log('sssss',Bookforinfo)
 
   this.setState({
     Bookinfo: bookData.data
@@ -43,7 +43,6 @@ remove = async (id) => {
 }
 
 render() {
-  this.componentDidMount()
   return (
     <>
       <h1>My Favorite Books</h1>
@@ -60,8 +59,10 @@ render() {
                   <Card.Subtitle >{item.status}</Card.Subtitle>
                   <Card.Text>  {item.description}</Card.Text>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <UpdateBook data={item} />
                   <Button variant="outline-danger" onClick={() => { this.remove(item._id) }} style={{ float: 'right', margin: '0px' }}>Remove</Button>
                   </div>
+
                 </Card.Body>
               </Card>
             );

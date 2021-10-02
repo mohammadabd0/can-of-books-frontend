@@ -11,12 +11,12 @@ class BookForm extends React.Component {
         }
     }
 
-    addBook = async (e) => {
-        e.preventDefault()
+    addBook = async (event) => {
+        event.preventDefault()
         let Bookforinfo = {
-            bookTitle: e.target.title.value,
-            bookDescription: e.target.description.value,
-            bookStatus: e.target.status.value,
+            bookTitle: event.target.title.value,
+            bookDescription: event.target.description.value,
+            bookStatus: event.target.status.value,
             userEmail: this.props.auth0.user.email
         }
         this.props.add(Bookforinfo)
